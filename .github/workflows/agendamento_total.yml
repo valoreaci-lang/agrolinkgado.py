@@ -1,4 +1,7 @@
-- name: Rodar Nespro
+- name: Instalar bibliotecas
+        run: pip install requests beautifulsoup4
+      
+      - name: Rodar Nespro
         run: python nespro.py
         
       - name: Rodar Agrolink
