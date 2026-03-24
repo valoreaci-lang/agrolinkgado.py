@@ -1,21 +1,5 @@
-name: Cotacao-Diaria-Gado
-on:
-  schedule:
-    - cron: '0 12 * * *'  # 09:00 de Pelotas
-  workflow_dispatch:      # Botão para rodar na mão
-
-jobs:
-  envio:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Configurar Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          
-      - name: Instalar bibliotecas
-        run: pip install requests beautifulsoup4
-      
+- name: Rodar Nespro
+        run: python nespro.py
+        
       - name: Rodar Agrolink
         run: python agrolink.py
