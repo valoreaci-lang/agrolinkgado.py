@@ -1,0 +1,20 @@
+name: Cotacao-Diaria-Gado
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Roda o Nespro às 09:00 de Pelotas (12:00 UTC)
+    - cron: '30 12 * * *' # Roda o Agrolink às 09:30 de Pelotas (12:30 UTC)
+  workflow_dispatch:      # Permite rodar manualmente para testar
+
+jobs:
+  envio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar bibliotecas
+        run: pip install requests beautifulsoup4
+      
+      - name: Rodar Nespro
+        run: python main.py
+        
+      - name: Rodar Agrolink
+        run: python agrolink.py
