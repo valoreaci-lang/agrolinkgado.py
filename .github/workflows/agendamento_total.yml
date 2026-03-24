@@ -1,5 +1,5 @@
 - name: Rodar Nespro
-        run: python nesprog.py
+        run: python nespro.py
         
       - name: Rodar Agrolink
         run: python agrolink.py
