@@ -1,20 +1,21 @@
 name: Cotacao-Diaria-Gado
 on:
   schedule:
-    - cron: '0 12 * * *'  # Roda o Nespro às 09:00 de Pelotas (12:00 UTC)
-    - cron: '30 12 * * *' # Roda o Agrolink às 09:30 de Pelotas (12:30 UTC)
-  workflow_dispatch:      # Permite rodar manualmente para testar
+    - cron: '0 12 * * *'  # 09:00 de Pelotas
+  workflow_dispatch:      # Botão para rodar na mão
 
 jobs:
   envio:
     runs-on: ubuntu-latest
-   steps:
+    steps:
       - uses: actions/checkout@v3
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
       - name: Instalar bibliotecas
         run: pip install requests beautifulsoup4
-      
-      # Como o main.py não está nessa pasta, vamos comentar ou remover a linha do Nespro 
-      # para o erro sumir, ou garanta que o arquivo do Nespro esteja aqui com o nome correto.
       
       - name: Rodar Agrolink
         run: python agrolink.py
