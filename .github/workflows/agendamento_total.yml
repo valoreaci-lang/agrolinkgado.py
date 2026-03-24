@@ -1,4 +1,20 @@
-- name: Instalar bibliotecas
+name: Cotacao-Diaria-Gado
+on:
+  schedule:
+    - cron: '0 12 * * *'  # 09:00 de Pelotas/Piratini
+  workflow_dispatch:      # Botão para rodar na hora
+
+jobs:
+  envio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Instalar bibliotecas
         run: pip install requests beautifulsoup4
       
       - name: Rodar Nespro
