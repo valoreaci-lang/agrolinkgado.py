@@ -8,13 +8,13 @@ on:
 jobs:
   envio:
     runs-on: ubuntu-latest
-    steps:
+   steps:
       - uses: actions/checkout@v3
       - name: Instalar bibliotecas
         run: pip install requests beautifulsoup4
       
-      - name: Rodar Nespro
-        run: python main.py
-        
+      # Como o main.py não está nessa pasta, vamos comentar ou remover a linha do Nespro 
+      # para o erro sumir, ou garanta que o arquivo do Nespro esteja aqui com o nome correto.
+      
       - name: Rodar Agrolink
         run: python agrolink.py
